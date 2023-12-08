@@ -281,6 +281,32 @@ if (!isset($_SESSION['userId'])) {
     </section>
 
 
+
+    <!-- footer -->
+
+  <footer class=" footer text-light py-4 text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>About Us</h5>
+                    <p>We connect dedicated blood donors with those in need, fostering a community committed to making a life-saving impact.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Contact Us</h5>
+                    <p>Email: info@example.com</p>
+                    <p>Phone: 018********</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Follow Us</h5>
+                    <a href="#" class="text-light mr-3"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#" class="text-light mr-3"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="text-light"><i class="fa-brands fa-square-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+  </footer>
+
+
     <!-- Optional JavaScript -->
     <script src="script.js"></script>
 

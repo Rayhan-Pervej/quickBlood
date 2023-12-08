@@ -16,6 +16,23 @@ body{
     background-color: rgb(29, 36, 49);
 }
 
+/* footer */
+
+footer {
+    background:rgb(19, 25, 36);
+    
+    
+}
+
+footer a {
+    color: white;
+}
+
+
+footer a:hover {
+    text-decoration: underline;
+}
+
 /* profile */
 
 .figure-img{
