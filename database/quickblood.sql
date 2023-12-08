@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 08, 2023 at 06:21 AM
+-- Generation Time: Dec 08, 2023 at 08:04 AM
 -- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- PHP Version: 8.0.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -44,7 +44,23 @@ CREATE TABLE `bloodrequest` (
 --
 
 INSERT INTO `bloodrequest` (`bloodRequestID`, `userID`, `requestSubject`, `requestBloodType`, `requestDescription`, `requestQuantity`, `requestHospital`, `requestCity`, `requestDate`) VALUES
-(6, 13, 'Urgent Blood Needed', 'B+', 'I need blood in Apollo hospital. My brother had a accident few hours ago. It Serious.', 3, 'Apollo Hospital', 'Dhaka', '2023-12-08');
+(6, 13, 'Urgent Blood Needed', 'B+', 'I need blood in Apollo hospital. My brother had a accident few hours ago. It Serious.', 3, 'Apollo Hospital', 'Dhaka', '2023-12-08'),
+(7, 13, 'blood needed', '3', 'accident', 4, 'adsf', '1', '2023-12-11');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `contactus`
+--
+
+CREATE TABLE `contactus` (
+  `id` int(25) NOT NULL,
+  `fName` varchar(25) NOT NULL,
+  `lName` varchar(20) NOT NULL,
+  `email` varchar(40) NOT NULL,
+  `number` varchar(16) NOT NULL,
+  `messege` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -85,6 +101,12 @@ ALTER TABLE `bloodrequest`
   ADD PRIMARY KEY (`bloodRequestID`);
 
 --
+-- Indexes for table `contactus`
+--
+ALTER TABLE `contactus`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `userinfo`
 --
 ALTER TABLE `userinfo`
@@ -98,7 +120,13 @@ ALTER TABLE `userinfo`
 -- AUTO_INCREMENT for table `bloodrequest`
 --
 ALTER TABLE `bloodrequest`
-  MODIFY `bloodRequestID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `bloodRequestID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `contactus`
+--
+ALTER TABLE `contactus`
+  MODIFY `id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `userinfo`

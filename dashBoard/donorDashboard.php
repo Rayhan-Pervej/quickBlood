@@ -60,10 +60,12 @@ if (!isset($_SESSION['userId'])) {
                     <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Blood Request</a>
+                    <a class="nav-link" href="#navbloodrequest">Blood Request</a>
                 </li>
+
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Blood Bank Location</a>
+
+                    <a class="nav-link" href="#navCheckBloodBank">Check Blood Bank</a>
                 </li>
                 
                 <li class="nav-item">
@@ -139,7 +141,7 @@ if (!isset($_SESSION['userId'])) {
     <section class=" container mt-5">
 
         <div class="row">
-            <div class="donationView col-md-6 col-lg-4 col-12 mb-5">
+            <div id="navbloodrequest" class="donationView col-md-6 col-lg-4 col-12 mb-5">
                 <h2>Blood Request</h2>
                 <div class="main-container">
                     <!-- Your fixed main container content goes here -->
@@ -188,7 +190,7 @@ if (!isset($_SESSION['userId'])) {
 
             <!-- location search -->
             
-            <div class="searchBloodBank col-md-6 col-lg-6">
+            <div class="searchBloodBank col-md-6 col-lg-6" id="navCheckBloodBank">
                 <div class="container SearchBox">
                     <form class="mb-3">
                         <div class="form-group">
