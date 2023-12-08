@@ -1,0 +1,137 @@
+.full_page{
+    display: flex;
+    margin-left: 10vh;
+    margin-right: 10vh;
+    height: 85vh;
+    padding: 30px;
+    background-image: url(picture/_3aa83302-2d9b-4a35-8502-4e6ac93f1247.jpg);
+}
+
+.left_section{
+    display: flex;
+    flex: 1;
+    margin-left: 55px;
+}
+
+article{
+    display: flex;
+    margin-top: 10px;
+    margin-left: -50vh;
+
+}
+.article-container{
+    margin-top: 70px;
+    display: flex;
+    flex-direction: column;
+
+}
+.num{
+    color: gold;
+}
+.em{
+    color: springgreen;
+    font-weight: bold;
+}
+
+.icon{
+    display: flex;
+    height: 1rem;
+    border-radius: .5rem;
+    margin-top: 20px;
+    margin-right: 10px;
+    
+}
+
+.text{
+  margin-bottom: -3px;
+  color: rgb(255, 255, 0);
+}
+.text2{
+    color: rgb(0, 0, 0);
+  }
+.details{
+    color: rgb(255, 255, 255);
+}
+.image{
+    width: 500px;
+}
+
+.right_section{
+   
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    align-items: center;
+    margin-right: 35px;
+
+}
+
+.name{
+    border: 1px solid black;
+    margin-bottom: -1px;
+    width: 356px;
+    height: 30px;
+}
+.lname{
+    margin-left: -2px;
+    height: 25px;
+    width: 181px;
+}
+
+.fullname{
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.emaddress{
+    border: 1px solid black;
+    margin-bottom: 0;
+    width: 356px;
+    height: 30px;
+}
+.emailid{
+    display: flex;
+    width: 350px;
+    height: 25px;
+    margin-top: -1px;
+}
+
+.phonenumber{
+    border: 1px solid black;
+    margin-bottom: 0;
+    width: 356px;
+    height: 30px;
+}
+.phone{
+    display: flex;
+    width: 350px;
+    height: 25px;
+    margin-top: -1px;
+}
+
+.messager_r{
+    border: 1px solid black;
+    margin-bottom: 0;
+    width: 356px;
+    height: 30px;
+}
+.messager_l{
+    display: flex;
+    width: 350px;
+    height: 80px;
+    margin-top: -1px;
+}
+#messege{
+    background-color: rgb(93, 180, 128);
+    padding-right: 20px;
+    padding-left: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 20px;
+    border-color: aliceblue;
+    border-radius: 2px;
+}
+.ppp{
+    height: 67vh;
+}

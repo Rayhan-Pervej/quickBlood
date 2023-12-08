@@ -1,0 +1,48 @@
+@media screen and (max-width: 1400px) {
+    .about-containers{
+        flex-wrap: wrap;
+    }
+    
+}
+
+
+
+@media screen and (max-width: 1200px) {
+    #navbar{
+        display: none;
+        
+    }
+    #hamburger-nav{
+        display: flex;
+        background-color: rgb(146, 220, 220);
+    }
+
+}
+
+@media screen and (max-width: 600px) {
+ 
+    .nav-link li a{
+        font-size: 1rem;
+
+    }
+
+    .logo{
+        font-size: 1.5rem;
+    }
+    .nav-link{
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+    }
+
+    .nav-links-container{
+        margin-top: 80px;
+    }
+    .rr{
+     display: none;
+    }
+
+}
+
+
+

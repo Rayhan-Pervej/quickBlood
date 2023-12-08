@@ -1,0 +1,45 @@
+@media screen and (max-width: 700px) {
+    .full_page {
+        flex-direction: column;
+        height: 83vh;
+        margin-bottom: 6rem;
+        margin: 0px;
+        padding: 0px;
+        background-image: none;
+    }
+
+    .left_section,
+    .right_section {
+        margin: 10px;
+    }
+
+    article {
+        margin-left: -260px;
+        margin-top: -30px;
+    }
+
+    .image {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+
+    .emaddress,
+    .phonenumber,
+    .messager_r {
+        width: 99.7%;
+    }
+    .messager_r{
+        margin-bottom: .5px;
+    }
+    .name{
+        width: 351px;
+    }
+    .lname{
+        width: 177px;
+    }
+
+    #messege {
+        margin-top: 20px;
+    }
+}
