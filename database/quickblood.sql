@@ -87,7 +87,7 @@ CREATE TABLE `userinfo` (
 --
 
 INSERT INTO `userinfo` (`userId`, `firstName`, `lastName`, `userType`, `bloodType`, `nidNumber`, `cityName`, `presentAddress`, `email`, `contactNumber`, `password`) VALUES
-(10, 'rayhan', 'pervej', 'Donor', 'O+', 34234234, 'Dhaka', 'bashundhara', 'rayhan@gmail.com', 904329403, 'akdfahdf'),
+(10, 'rayhan', 'pervej', 'Donor', 'O+', 34234234, 'Dhaka', 'bashundhara', 'rayhan@gmail.com', 904329403, '12345'),
 (13, 'Ashikur', 'Piyal', 'Receiver', 'O+', 2147483647, 'Dhaka', 'bashundhara', 'piyal@gmail.com', 124334435, '12345');
 
 --
