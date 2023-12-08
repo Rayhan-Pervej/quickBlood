@@ -4,15 +4,25 @@
 
 function register() {
   let loginForm = document.getElementById('loginForm');
-  let registerForm = document.getElementById('registerForm')
+  let registerForm = document.getElementById('registerForm');
   loginForm.setAttribute('hidden', 'true');
   registerForm.removeAttribute('hidden');
 
 }
 
+function bankRegister() {
+  let loginForm = document.getElementById('loginForm');
+  let bankRegisterForm = document.getElementById('bankRegisterForm');
+  loginForm.setAttribute('hidden', 'true');
+  bankRegisterForm.removeAttribute('hidden');
+
+}
+
 function login() {
   let loginForm = document.getElementById('loginForm');
-  let registerForm = document.getElementById('registerForm')
+  let registerForm = document.getElementById('registerForm');
+  let bankRegisterForm = document.getElementById('bankRegisterForm');
+  bankRegisterForm.setAttribute('hidden', 'true');
   registerForm.setAttribute('hidden', 'true');
   loginForm.removeAttribute('hidden');
 }
@@ -96,6 +106,47 @@ function signUp() {
     });
 }
 
+function apply() {
+
+  const bankName = document.getElementById('bankName').value;
+  const regId = document.getElementById('regId').value;
+  const licenceNumber = document.getElementById('licenceNumber').value;
+  const bankCityName = document.getElementById('bankCityName').value;
+  const bankAddress = document.getElementById('bankAddress').value;
+  const bankEmail = document.getElementById('bankEmail').value;
+  const bankNumber = document.getElementById('bankNumber').value;
+  console.log(bankName);
+
+  const formData = {
+    bankName,
+    regId,
+    licenceNumber,
+    bankCityName,
+    bankAddress,
+    bankEmail,
+    bankNumber
+  };
+
+  fetch('php/bloodBankRegister.php',{
+    method: 'POST',
+    headers:{
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(formData),
+  })
+
+  .then(response => response.text())
+    .then(data => {
+      // Handle the response from the server
+      console.log(data);
+      // You can update the UI or perform other actions based on the server response
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+
+
+}
 
 // sign in 
 

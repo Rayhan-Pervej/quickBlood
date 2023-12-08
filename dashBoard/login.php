@@ -61,7 +61,7 @@
           <div class="col d-flex justify-content-center">
             <!-- Checkbox -->
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="form2Example31" checked />
+              <input class="form-check-input" type="checkbox" value=""  checked />
               <label class="form-check-label" for="form2Example31"> Remember me </label>
             </div>
           </div>
@@ -75,9 +75,12 @@
         <!-- Submit button -->
         <button type="button" class="btn btn-primary btn-block mb-4" onclick="signIn()">Sign in</button>
 
+
+
         <!-- Register buttons -->
         <div class="text-center">
           <p>Not a member? <a href="#!" id="registerButton" onclick="register()">Register</a></p>
+          <p>Register as a Blood Bank <a href="#!" id="bankRegisterButton" onclick="bankRegister()">Register</a></p>
           <p>or sign in with:</p>
           <button type="button" class="btn btn-link btn-floating mx-1">
             <i class="fab fa-facebook-f"></i>
@@ -98,7 +101,7 @@
       </form>
 
 
-      <!-- registration form -->
+      <!-- registration form for reciever and donor -->
 
 
 
@@ -214,6 +217,64 @@
           </button>
         </div>
 
+      </div>
+
+
+       <!-- registration form for BloodBank-->
+
+
+      <div id="bankRegisterForm" hidden>
+        <form >
+          <div class="form-outline mb-3">
+            <input type="text" id="bankName" class="form-control" required />
+            <label class="form-label" for="form2Example1">Blood Bank Name</label>
+          </div>
+  
+          <div class="form-outline mb-3">
+            <input type="text" id="regId" class="form-control" required />
+            <label class="form-label" for="form2Example1">Registration Number</label>
+          </div>
+
+          <div class="form-outline mb-3">
+            <input type="text" id="licenceNumber" class="form-control" required />
+            <label class="form-label" for="form2Example1">Trade licence Number</label>
+          </div>
+  
+          <div class="form-outline mb-3">
+            <input type="text" id="bankCityName" class="form-control" required />
+            <label class="form-label" for="form2Example1">City Name</label>
+          </div>
+  
+          <div class="form-outline mb-3">
+            <input type="text" id="bankAddress" class="form-control" required />
+            <label class="form-label" for="form2Example1">Address</label>
+          </div>
+
+          <div class="form-outline mb-4">
+            <input type="email" id="bankEmail" class="form-control" required />
+            <label class="form-label" for="form2Example1">Email Address</label>
+          </div>
+  
+          <div class="form-outline mb-4">
+            <input type="tel" id="bankNumber" class="form-control" required />
+            <label class="form-label" for="form2Example1">Mobile Number</label>
+          </div>
+
+
+          <div class="form-check mb-3">
+            <input class="form-check-input" type="checkbox"  checked />
+            <label class="form-check-label" for="form2Example31"> I accept all the policy </label>
+            <figcaption class="text-light"><i> *You will get email for approval. Wait for the confirmation as we have to varify your company.</i></figcaption>
+          </div>
+  
+  
+          <!-- Submit button -->
+          <button type="submit" class="btn btn-primary btn-block mb-4" onclick="apply()">Apply</button>
+
+        </form>
+
+        <div class="text-center mb-4">
+          <p>Already have an account? <a href="" id="registerButton" onclick="login()">Login</a></p>
       </div>
 
       
