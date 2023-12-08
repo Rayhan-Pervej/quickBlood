@@ -1,4 +1,6 @@
+
 <?php
+
 session_start();
 
 $servername = "localhost";
@@ -8,42 +10,28 @@ $database = "quickblood";
 
 $conn = new mysqli($servername, $username, $password, $database);
 
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+$data = json_decode(file_get_contents("php://input"), true) ?? $_POST;
 
-// Get the user's ID from the session
+// Get form data from POST request
 $userId = $_SESSION['userId'];
+$requestHeader = $data['requestHeader'];
+$requestBloodType = $data['requestBloodType'];
+$requestDescription = $data['requestDescription'];
+$requestQuantity = $data['requestQuantity'];
+$requestHospital = $data['requestHospital'];
+$requestCity = $data['requestCity'];
+$requestDate = $data['requestDate'];
 
-// SQL query to find the donor's city based on userId
-$userCityQuery = "SELECT cityName FROM userInfo WHERE userId = '$userId'";
-$userCityResult = $conn->query($userCityQuery);
+// Insert data into the database
+$sql = "INSERT INTO bloodrequest (userId, requestSubject, requestBloodType, requestDescription, requestQuantity, requestHospital, requestCity, requestDate)
+        VALUES ($userId,'$requestHeader', '$requestBloodType', '$requestDescription', $requestQuantity, '$requestHospital', '$requestCity', '$requestDate')";
 
-if ($userCityResult->num_rows > 0) {
-    $userCityRow = $userCityResult->fetch_assoc();
-    $userCity = $userCityRow['cityName'];
-
-    // SQL query to fetch blood requests based on donor's city
-    $bloodRequestQuery = "SELECT * FROM bloodrequest WHERE requestCity = '$userCity'";
-    $bloodRequestResult = $conn->query($bloodRequestQuery);
-
-    $dataArray = [];
-
-    if ($bloodRequestResult->num_rows > 0) {
-        while ($row = $bloodRequestResult->fetch_assoc()) {
-            $dataArray[] = $row;
-        }
-    } else {
-        echo "0 results";
-    }
-
-    // Close the database connection
-    $conn->close();
-
-    // Return the data as JSON
-    echo json_encode($dataArray);
+if ($conn->query($sql) === TRUE) {
+    json_encode(['success' => 'Request submitted successfully']);
 } else {
-    echo "User city not found";
-    $conn->close();
+json_encode(['error' => 'Error submitting request']);
 }
+
+// Close the database connection
+$conn->close();
 ?>

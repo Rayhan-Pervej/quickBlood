@@ -168,7 +168,7 @@ function donorRequest() {
     return;
   }
 
-  fetch('recieverDashBoard.php', {
+  fetch('php/bloodRequest.php', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -224,7 +224,7 @@ function donorRequest() {
 
 }
 
-//showing the post of the request post
+//showing the post of the request post in reciever dashboard
 
 document.addEventListener('DOMContentLoaded', function () {
   // Fetch data from PHP using AJAX
@@ -310,7 +310,7 @@ function DonorSearch() {
 
         // Fill in card details
         cardBody.innerHTML = `
-          <h2 class="card-title text-capitalize">${user.firstName + " "+ user.lastName}</h2>
+          <h2 class="card-title text-capitalize">${user.firstName + " " + user.lastName}</h2>
           <p>Blood Type: <span>${user.bloodType}</span></p>
           <p>Total Donate: <span>${user.totalDonations}</span></p>
           <p>Contact: <span>${user.contactNumber}</span></p>
@@ -332,25 +332,25 @@ function DonorSearch() {
 //showing the blood request post in the donor dashboard
 
 function fetchBloodRequests() {
-  
-  fetch('php/bloodRequest.php') 
+
+  fetch('php/viewBloodRequest.php')
     .then(response => response.json())
     .then(jsonData => {
-      
+
       console.log(jsonData);
 
-      
+
       var postContainer = document.getElementById('donorPostViewer');
 
-     
+
       postContainer.innerHTML = '';
 
       jsonData.forEach(function (request) {
-       
+
         var card = document.createElement('div');
         card.className = 'card mb-3';
 
-        
+
         var cardHeader = document.createElement('div');
         cardHeader.className = 'card-header';
         cardHeader.innerHTML = `
@@ -360,20 +360,20 @@ function fetchBloodRequests() {
           <h6 class="card-title">Hospital: <span>${request.requestHospital}</span></h6>
         `;
 
-        
+
         card.appendChild(cardHeader);
 
-       
+
         var cardBody = document.createElement('div');
         cardBody.className = 'card-body';
         cardBody.innerHTML = `
           <p class="card-text">${request.requestDescription}</p>
         `;
 
-        
+
         card.appendChild(cardBody);
 
-       
+
         var cardFooter = document.createElement('div');
         cardFooter.className = 'card-footer d-flex justify-content-end';
 
@@ -394,13 +394,13 @@ function fetchBloodRequests() {
           </div>
         `;
 
-        
+
         cardFooter.appendChild(commentBtn);
 
-       
+
         card.appendChild(cardFooter);
 
-       
+
         postContainer.appendChild(card);
       });
     })
