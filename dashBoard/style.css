@@ -1,0 +1,113 @@
+p{
+    font-family: 'dosis';
+    font-size: large;
+    color: white;
+    
+}
+
+
+h1,h2,h3,h4,h5,h6,button,input,label{
+    font-family: 'nunito';
+    font-weight: bold;
+    color: white;
+}
+
+body{
+    background-color: rgb(29, 36, 49);
+}
+
+/* profile */
+
+.figure-img{
+    border: 2px solid white;
+
+}
+
+/* banner */
+
+
+.carousel-item{
+    max-width: 40rem ;
+    text-align: center;
+    margin: 0 auto;
+}
+
+/* blood post */
+
+.dropdown-menu label{
+    color: black;
+    font-weight: bold;
+}
+
+.bloodRequestContainer{
+    border: 2px solid white;
+    border-radius: 1rem;
+    width: fit-content;
+    padding: 2rem;
+    
+    
+}
+
+.bloodRequest{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+
+.dropdown-menu{
+
+    padding: .5rem;
+}
+.commentCon{
+    border: 2px solid gray;
+    border-radius: .5rem;
+    margin-block-end: .5rem;
+
+}
+
+.dropdown-menu .commentCon  h5{
+    color: black; 
+}
+
+.dropdown-menu .commentCon  p{
+    color: black; 
+}
+
+
+.SearchBloodBank{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.bloodBankMap{
+    height: 16rem;
+}
+
+/* blood request post view view */
+
+.main-container {
+    height: 65vh; /* Set your preferred height, using viewport height */
+    overflow: auto;
+    background-color: rgb(21, 25, 34); /* Set your preferred background color */
+    
+  }
+
+
+#post-container {
+    padding-top: 20px; /* Adjust padding for better spacing */
+    
+}
+
+
+.card{
+    border: none;
+    background-color: rgb(29, 36, 49);
+}
+
+ul{
+    font-family: 'nunito';
+    font-weight: bold;
+    color: white;
+}
