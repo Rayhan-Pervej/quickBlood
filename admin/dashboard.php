@@ -45,7 +45,7 @@ include 'count_total_suggestion.php';
                   <p class="card-text text-light p-4">Total Number of Doners</p>
                 </div>
                 <div class="card-footer text-muted text-start">
-                    <a href="http://localhost/quickBlood/admin/fetchUserData.php" class="btn">Full details</a>
+                    <a href="fetchUserData.php" class="btn">Full details</a>
                     <img src="../image/icons8-arrow-30.png" alt="">
                 </div>
               </div>
@@ -105,7 +105,7 @@ include 'count_total_suggestion.php';
                     <p class="card-text text-light p-4">Painding Bloodbank Request</p>
                   </div>
                   <div class="card-footer text-muted text-start">
-                      <a href="http://localhost/quickBlood/admin/fetchData.php" class="btn">Full details</a>
+                      <a href="fetchData.php" class="btn">Full details</a>
                       <img src="../image/icons8-arrow-30.png" alt="">
                   </div>
                 </div>
@@ -118,7 +118,7 @@ include 'count_total_suggestion.php';
                       <p class="card-text text-light p-4">Total Suggestions</p>
                   </div>
                   <div class="card-footer text-muted text-start">
-                      <a href="http://localhost/quickBlood/admin/showmessege.php" class="btn">Full details</a>
+                      <a href="showmessege.php" class="btn">Full details</a>
                       <img src="../image/icons8-arrow-30.png" alt="">
                   </div>
               </div>

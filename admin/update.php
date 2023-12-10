@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $result = mysqli_query($link, $sql);
 
     if ($result) {
-        header("Location: http://localhost/quickBlood/admin/showmessege.php");
+        header("Location:showmessege.php");
         exit();
     } else {
         echo "Error updating record: " . mysqli_error($link);
