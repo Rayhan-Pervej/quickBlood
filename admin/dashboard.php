@@ -27,7 +27,7 @@ include 'count_total_suggestion.php';
           <div class="col">
                 <div class="card text-center">
                     <div class="card-body bg-danger text-light">
-                      <h5 class="card-title">Number</h5>
+                      <h5 class="card-title">8</h5>
                       <p class="card-text text-light p-4">Total listed Blood group</p>
                     </div>
                     <div class="card-footer text-muted text-start">
@@ -41,11 +41,11 @@ include 'count_total_suggestion.php';
           <div class="col ">
             <div class="card text-center">
                 <div class="card-body bg-info text-light">
-                  <h5 class="card-title">Number</h5>
+                 <?php include 'userinfocount.php'; ?>
                   <p class="card-text text-light p-4">Total Number of Doners</p>
                 </div>
                 <div class="card-footer text-muted text-start">
-                    <a href="#" class="btn">Full details</a>
+                    <a href="http://localhost/quickBlood/admin/fetchUserData.php" class="btn">Full details</a>
                     <img src="../image/icons8-arrow-30.png" alt="">
                 </div>
               </div>
@@ -53,7 +53,7 @@ include 'count_total_suggestion.php';
           <div class="col">
             <div class="card text-center">
                 <div class="card-body bg-primary text-light">
-                  <h5 class="card-title">Number</h5>
+                  <h5 class="card-title">1</h5>
                   <p class="card-text text-light p-4">Number of Bloodbanks</p>
                 </div>
                 <div class="card-footer text-muted text-start">
@@ -66,7 +66,7 @@ include 'count_total_suggestion.php';
           <div class="col">
             <div class="card text-center">
                 <div class="card-body bg-success text-light">
-                  <h5 class="card-title">Number</h5>
+                  <h5 class="card-title">10</h5>
                   <p class="card-text text-light p-4">Total  Blood Received</p>
                 </div>
                 <div class="card-footer text-muted text-start">
@@ -87,7 +87,7 @@ include 'count_total_suggestion.php';
             <div class="col ">
               <div class="card text-center">
                   <div class="card-body bg-warning text-light">
-                    <h5 class="card-title">Number</h5>
+                    <h5 class="card-title">1</h5>
                     <p class="card-text text-light p-4">Painding Blood request</p>
                   </div>
                   <div class="card-footer text-muted text-start">
@@ -99,11 +99,13 @@ include 'count_total_suggestion.php';
             <div class="col">
               <div class="card text-center">
                   <div class="card-body bg-secondary text-light">
-                    <h5 class="card-title">Number</h5>
+                  <div id="numberContainer">
+                      <?php include 'get_pending_bloodbank_count.php'; ?>
+                  </div>
                     <p class="card-text text-light p-4">Painding Bloodbank Request</p>
                   </div>
                   <div class="card-footer text-muted text-start">
-                      <a href="#" class="btn">Full details</a>
+                      <a href="http://localhost/quickBlood/admin/fetchData.php" class="btn">Full details</a>
                       <img src="../image/icons8-arrow-30.png" alt="">
                   </div>
                 </div>
@@ -125,7 +127,8 @@ include 'count_total_suggestion.php';
             
           </div>
 
-          <a href="../login.html" class="btn btn-danger text-white m-lg-4">Logout</a>
+          <a href="../quickBlood.html" class="btn btn-danger text-white m-lg-4">Logout</a>
+          <script src="script.js"></script>
       </div>
 
       

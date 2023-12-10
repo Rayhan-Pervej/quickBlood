@@ -26,7 +26,8 @@ article{
 
 }
 .num{
-    color: gold;
+    color: black;
+    font-weight: bold;
 }
 .em{
     color: springgreen;
@@ -44,13 +45,14 @@ article{
 
 .text{
   margin-bottom: -3px;
-  color: rgb(255, 255, 0);
+  color: black;
 }
 .text2{
     color: rgb(0, 0, 0);
   }
 .details{
-    color: rgb(255, 255, 255);
+    color: red;
+    font-weight: bold;
 }
 .image{
     width: 500px;
