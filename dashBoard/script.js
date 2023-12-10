@@ -34,8 +34,6 @@ function login() {
 
 function signUp() {
 
-
-  // Get form data
   const firstName = document.getElementById('firstName').value;
   const lastName = document.getElementById('lastName').value;
   const userType = document.getElementById('userType').value;
@@ -71,7 +69,7 @@ function signUp() {
   const BloodTypeValue = bloodType;
   const BloodTypeText = bloodTypeMap[BloodTypeValue];
 
-  // Create an object with the form data
+  // an object with the form data
   const formData = {
     firstName,
     lastName,
@@ -97,9 +95,9 @@ function signUp() {
   })
     .then(response => response.text())
     .then(data => {
-      // Handle the response from the server
+      
       console.log(data);
-      // You can update the UI or perform other actions based on the server response
+      
     })
     .catch((error) => {
       console.error('Error:', error);
@@ -127,19 +125,19 @@ function apply() {
     bankNumber
   };
 
-  fetch('php/bloodBankRegister.php',{
+  fetch('php/bloodBankRegister.php', {
     method: 'POST',
-    headers:{
+    headers: {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(formData),
   })
 
-  .then(response => response.text())
+    .then(response => response.text())
     .then(data => {
-      // Handle the response from the server
+      
       console.log(data);
-      // You can update the UI or perform other actions based on the server response
+      
     })
     .catch((error) => {
       console.error('Error:', error);
@@ -196,7 +194,7 @@ function signIn() {
 
 function donorRequest() {
 
-  // Get form values
+ 
   const requestHeader = document.getElementById('requestHeader').value;
   const requestBloodType = document.getElementById('requestbloodType').value;
   const requestDescription = document.getElementById('requestDescription').value;
@@ -278,11 +276,10 @@ function donorRequest() {
 //showing the post of the request post in reciever dashboard
 
 document.addEventListener('DOMContentLoaded', function () {
-  // Fetch data from PHP using AJAX
+  
   fetch('php/recieverDashboard.php')
     .then(response => response.json())
     .then(dataArray => {
-      // Process the data and display it on the page
       displayBloodRequests(dataArray);
     })
     .catch(error => console.error('Error fetching data:', error));
@@ -460,6 +457,114 @@ function fetchBloodRequests() {
     });
 }
 
-// Call the function to fetch and display blood requests
+//  fetch and display blood requests
 fetchBloodRequests();
+
+
+
+
+//Donor make an appointment to blood Bank
+
+function fetchBloodBanks() {
+  fetch('php/bloodBankView.php')
+    .then(response => response.json())
+    .then(jsonData => {
+
+      console.log(jsonData);
+
+      var bloodBankContainer = document.getElementById('bloodBankView');
+      bloodBankContainer.innerHTML = '';
+
+      Object.values(jsonData).forEach(function (bloodBank) { //this is a effiecent way to get the obeject json file and pass it as an array. 
+
+        var card = document.createElement('div');
+        card.className = 'card mb-3';
+
+        var cardHeader = document.createElement('div');
+        cardHeader.className = 'card-header';
+        cardHeader.innerHTML = `
+                  <h4 class="card-title text-center">${bloodBank.bankName}</h4>
+                  <p class="card-title">${bloodBank.bankAddress}</p>
+                  <h6 class="card-title">${bloodBank.bankNumber}</h6>
+              `;
+
+        card.appendChild(cardHeader);
+
+        var cardBody = document.createElement('div');
+        cardBody.className = 'card-body';
+        cardBody.innerHTML = `
+                  <h4>Blood Available:</h4>
+                  <ul>
+                  ${bloodBank.bloodData.map(blood => `<li>${blood.bloodType} : <span>${blood.totalQuantity} bags</span></li>`).join('')} 
+              </ul>
+              `;
+
+        card.appendChild(cardBody);
+
+        var cardFooter = document.createElement('div');
+        cardFooter.className = 'card-footer d-flex justify-content-end';
+
+        var appointBtn = document.createElement('button');
+        appointBtn.className = 'btn btn-primary dropdown-toggle';
+        appointBtn.setAttribute('type', 'button');
+        appointBtn.setAttribute('data-toggle', 'dropdown');
+        appointBtn.setAttribute('aria-haspopup', 'true');
+        appointBtn.setAttribute('aria-expanded', 'false');
+        appointBtn.textContent = 'Make an Appointment';
+
+        var dropdownMenu = document.createElement('div');
+        dropdownMenu.className = 'dropdown-menu';
+
+        var appointForm = document.createElement('form');
+        appointForm.innerHTML = `
+                  <div>
+                      <label for="appointerFirstName">First Name</label>
+                      <input type="text" class="form-control" id="appointerFirstName">
+                  </div>
+                  <div>
+                      <label for="appointerLastName">Last Name</label>
+                      <input type="text" class="form-control" id="appointerLastName">
+                  </div>
+                  <div>
+                      <label for="appointerContactNumber">Mobile Number</label>
+                      <input type="text" class="form-control" id="appointerContactNumber">
+                  </div>
+                  <div>
+                      <label for="appointerBloodType">Blood Type</label>
+                      <input type="text" class="form-control" placeHolder="" id="appointerBloodType">
+                  </div>
+                  <div>
+                      <label for="appointerDate">Date of Blood Donation</label>
+                      <input type="date" class="form-control" id="appointerDate">
+                  </div>
+              `;
+
+        dropdownMenu.appendChild(appointForm);
+
+        var submitBtn = document.createElement('button');
+        submitBtn.className = 'text-center mt-3 btn btn-primary';
+        submitBtn.textContent = 'Submit';
+        dropdownMenu.appendChild(submitBtn);
+        submitBtn.onclick = bloodBankAppointment;
+
+        cardFooter.appendChild(appointBtn);
+        cardFooter.appendChild(dropdownMenu);
+
+        card.appendChild(cardFooter);
+
+        bloodBankContainer.appendChild(card);
+      });
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+}
+
+
+fetchBloodBanks();
+
+
+function bloodBankAppointment() {
+  
+}
 

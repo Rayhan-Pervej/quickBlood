@@ -204,7 +204,7 @@ if (!isset($_SESSION['userId'])) {
                 <div class="main-container">
                     <!-- Your fixed main container content goes here -->
 
-                    <div id="post-container" class="container">
+                    <div id="bloodBankView" class="container pt-4">
                         <!-- Dynamic post cards go here -->
                         <div class="card mb-3">
                             <div class="card-header">
@@ -227,30 +227,30 @@ if (!isset($_SESSION['userId'])) {
 
                                 <div class="dropdown-menu">
 
-                                    <form action="">
+                                    <form >
                                         <div>
                                             <label for="">First Name</label>
-                                            <input type="text" class="form-control">
+                                            <input type="text" class="form-control" id="appointerFirstName">
                                         </div>
                                         <div>
                                             <label for="">Last Name</label>
-                                            <input type="text" class="form-control">
+                                            <input type="text" class="form-control" id="appointerLastName">
                                         </div>
                                         <div>
                                             <label for="">Mobile Number</label>
-                                            <input type="text" class="form-control">
+                                            <input type="text" class="form-control" id="appointerContactNumber">
                                         </div>
                                         <div>
                                             <label for="">Blood Type</label>
-                                            <input type="text" class="form-control" placeHolder="">
+                                            <input type="text" class="form-control" placeHolder="" id="appointerBloodType">
                                         </div>
                                         <div>
                                             <label for="">Date of Blood Donation</label>
-                                            <input type="date" class="form-control">
+                                            <input type="date" class="form-control" id="appointerDate">
                                         </div>
                                     </form>
 
-                                    <button class="text-center mt-3 btn btn-primary"> Submit</button>
+                                    <button class="text-center mt-3 btn btn-primary" onclick=bloodBankAppointment()> Submit</button>
 
                                 </div>
                                 
@@ -274,11 +274,11 @@ if (!isset($_SESSION['userId'])) {
 
     <!-- hospital section -->
 
-    <section class="healthcheckup mt-5">
+    <!-- <section class="healthcheckup mt-5">
         <div class="container">
             <h4>Check Your Health</h4>
         </div>
-    </section>
+    </section> -->
 
 
 
