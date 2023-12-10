@@ -50,21 +50,41 @@ h1,h2,h3,h4,h5,h6,button,input,label{
 }
 
 .box-blood-storage {
-    margin: 1em; /* Add margin to create space between boxes */
-    border: 2px solid rgb(29, 36, 49); /* Dark border color */
-    width: 250px; /* Adjust the width as needed */
-    border-radius: 10px; /* Rounded corners */
+    margin: 1em;
+    border: 2px solid rgb(29, 36, 49);
+    width: 250px;
+    border-radius: 10px;
     background-color: #284f75;
     display: inline-block;
-    width: 180px; /* Adjust the width as needed */
+    width: 180px;
     height: 150px;
 }
 
 .box-blood-storage h4 {
-    color: white; /* Black text color */
+    color: white;
 }
 
 .box-blood-storage p {
-    color: white; /* Gray text color */
+    color: white;
 }
 
+.main-container {
+    height: 65vh; 
+    overflow: auto;
+    background-color: rgb(163, 184, 233); 
+    
+  }
+#post-container {
+    padding-top: 20px; 
+}
+
+.card{
+    border: none;
+    background-color: rgb(106, 140, 202);
+}
+
+ul{
+    font-family: 'nunito';
+    font-weight: bold;
+    color: white;
+}
