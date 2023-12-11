@@ -1,3 +1,16 @@
+<?php
+session_start();
+
+// Check if the user is not logged in
+if (!isset($_SESSION['bankId'])) {
+    // Redirect to the login page
+    header('Location:login.php');
+    exit();
+}
+?>
+
+
+
 <!doctype html>
 <html lang="en">
 
@@ -68,6 +81,8 @@
             </div>
         </nav>
 
+        <!-- bloodBank Information -->
+
         <!-- Notice banner -->
         <section class="banner mt-5">
             <div class="container bannerCon">
@@ -101,85 +116,85 @@
             <div class="row justify-content-between">
                 <h2>Blood Storages</h2>
                 
-                <a class="btn btn-info btn-update-storage" href="updateStorage.html" role="button">Update Storage</a>
+                <a class="btn btn-info btn-update-storage" href="updateStorage.php" role="button">Update Storage</a>
             </div>
 
-            <div class="row justify-content-center row-blood-storage">
+            <div class="row justify-content-center row-blood-storage" id="bloodStorageBox">
         
-                <!-- Box 1: Blood Type A+-->
+<!-- 
                 <div class="col-mb-4 box-blood-storage">
                     <div class="p-3 text-center">
-                        <h4>A+</h4>
+                        <h4 id="a+">A+</h4>
                         <p>Blood Available</p>
-                        <p>Total: 5 Bags</p>
+                        <p id="a+Quantity">Total: 5 Bags</p>
                     </div>
                 </div>
         
-                <!-- Box 2: Blood Type A- -->
+
                 <div class="col-mb-4 box-blood-storage">
                     <div class="p-3 text-center">
-                        <h4>A-</h4>
+                        <h4 id="a-">A-</h4>
                         <p>Blood Available</p>
-                        <p>Total: 5 Bags</p>
+                        <p id="a-Quantity">Total: 5 Bags</p>
                     </div>
                 </div>
         
-                <!-- Box 3: Blood Type B+ -->
+    
                 <div class="col-mb-4 box-blood-storage">
                     <div class="p-3 text-center">
-                        <h4>B+</h4>
+                        <h4 id="b+">B+</h4>
                         <p>Blood Available</p>
-                        <p>Total: 5 Bags</p>
+                        <p id="b+Quantity">Total: 5 Bags</p>
                     </div>
                 </div>
         
-                <!-- Box 4: Blood Type B- -->
+    
                 <div class="col-mb-4 box-blood-storage">
                     <div class="p-3 text-center">
-                        <h4>B-</h4>
+                        <h4 id="b-">B-</h4>
                         <p>Blood Available</p>
-                        <p>Total: 5 Bags</p>
+                        <p id="b-Quantity">Total: 5 Bags</p>
                     </div>
                 </div>
             </div>
         
             <div class="row justify-content-center row-blood-storage">
         
-                <!-- Box 5: Blood Type O+ -->
+    
                 <div class="col-mb-4 box-blood-storage">
                     <div class="p-3 text-center">
-                        <h4>O+</h4>
+                        <h4 id="o+">O+</h4>
                         <p>Blood Available</p>
-                        <p>Total: 5 Bags</p>
+                        <p id="o+Quantity">Total: 5 Bags</p>
                     </div>
                 </div>
         
-                <!-- Box 6: Blood Type O- -->
+    
                 <div class="col-mb-4 box-blood-storage">
                     <div class="p-3 text-center">
-                        <h4>O-</h4>
+                        <h4 id="o-">O-</h4>
                         <p>Blood Available</p>
-                        <p>Total: 5 Bags</p>
+                        <p id="o-Quantity">Total: 5 Bags</p>
                     </div>
                 </div>
         
-                <!-- Box 7: Blood Type AB+ -->
+        
                 <div class="col-mb-4 box-blood-storage">
                     <div class="p-3 text-center">
-                        <h4>AB+</h4>
+                        <h4 id="ab+">AB+</h4>
                         <p>Blood Available</p>
-                        <p>Total: 5 Bags</p>
+                        <p id="ab+Quantity">Total: 5 Bags</p>
                     </div>
                 </div>
 
-                <!-- Box 8: Blood Type AB- -->
+        
                 <div class="col-mb-4 box-blood-storage">
                     <div class="p-3 text-center">
-                        <h4>AB-</h4>
+                        <h4 id="ab-">AB-</h4>
                         <p>Blood Available</p>
-                        <p>Total: 5 Bags</p>
+                        <p id="ab-Quantity">Total: 5 Bags</p>
                     </div>
-                </div>
+                </div> -->
         
             </div>
         </div>

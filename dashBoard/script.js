@@ -95,9 +95,9 @@ function signUp() {
   })
     .then(response => response.text())
     .then(data => {
-      
+
       console.log(data);
-      
+
     })
     .catch((error) => {
       console.error('Error:', error);
@@ -135,9 +135,9 @@ function apply() {
 
     .then(response => response.text())
     .then(data => {
-      
+
       console.log(data);
-      
+
     })
     .catch((error) => {
       console.error('Error:', error);
@@ -177,6 +177,9 @@ function signIn() {
         window.location.href = 'recieverDashboard.php';
       } else if (data.userType === 'Donor') {
         window.location.href = 'donorDashboard.php';
+      }
+      else if (data === 'bloodBank') {
+        window.location.href = 'bloodbankDashboard.php';
       } else {
         // Handle other cases or show an error message
         console.log(data);
@@ -194,7 +197,7 @@ function signIn() {
 
 function donorRequest() {
 
- 
+
   const requestHeader = document.getElementById('requestHeader').value;
   const requestBloodType = document.getElementById('requestbloodType').value;
   const requestDescription = document.getElementById('requestDescription').value;
@@ -247,8 +250,7 @@ function donorRequest() {
         document.getElementById('requestCity').value = '';
         document.getElementById('requestDate').value = '';
 
-        // Close the dropdown (you may need to replace 'yourDropdownID' with the actual ID of your dropdown)
-        // Example: $('#yourDropdownID').dropdown('toggle');
+
       } else {
         // Handle error case
         console.error('Error submitting request:', data.error);
@@ -276,7 +278,7 @@ function donorRequest() {
 //showing the post of the request post in reciever dashboard
 
 document.addEventListener('DOMContentLoaded', function () {
-  
+
   fetch('php/recieverDashboard.php')
     .then(response => response.json())
     .then(dataArray => {
@@ -463,7 +465,7 @@ fetchBloodRequests();
 
 
 
-//Donor make an appointment to blood Bank
+//Donor will able to view the blood Bank
 
 function fetchBloodBanks() {
   fetch('php/bloodBankView.php')
@@ -486,6 +488,7 @@ function fetchBloodBanks() {
                   <h4 class="card-title text-center">${bloodBank.bankName}</h4>
                   <p class="card-title">${bloodBank.bankAddress}</p>
                   <h6 class="card-title">${bloodBank.bankNumber}</h6>
+                  <p id="bloodBankId" hidden> ${bloodBank.bankId}</p>
               `;
 
         card.appendChild(cardHeader);
@@ -544,14 +547,14 @@ function fetchBloodBanks() {
         var submitBtn = document.createElement('button');
         submitBtn.className = 'text-center mt-3 btn btn-primary';
         submitBtn.textContent = 'Submit';
-        dropdownMenu.appendChild(submitBtn);
-        submitBtn.onclick = bloodBankAppointment;
+        submitBtn.onclick = function () {
+          bloodBankAppointment();
+        };
 
+        dropdownMenu.appendChild(submitBtn);
         cardFooter.appendChild(appointBtn);
         cardFooter.appendChild(dropdownMenu);
-
         card.appendChild(cardFooter);
-
         bloodBankContainer.appendChild(card);
       });
     })
@@ -563,8 +566,131 @@ function fetchBloodBanks() {
 
 fetchBloodBanks();
 
-
+// donor will make an appointment to bloodBank
 function bloodBankAppointment() {
-  
+  const appointerFirstName = document.getElementById('appointerFirstName').value;
+  const appointerLastName = document.getElementById('appointerLastName').value;
+  const appointerContactNumber = document.getElementById('appointerContactNumber').value;
+  const appointerBloodType = document.getElementById('appointerBloodType').value;
+  const appointerDate = document.getElementById('appointerDate').value;
+  const bankId = document.getElementById('bloodBankId').textContent;
+  console.log(appointerDate);
+
+
+  fetch('php/donorAppointment.php', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      appointerFirstName,
+      appointerLastName,
+      appointerContactNumber,
+      appointerBloodType,
+      appointerDate,
+      bankId
+    }),
+  })
+    .then(response => response.json())
+    .then(jsonData => {
+
+      document.getElementById('appointerFirstName').value = '';
+      document.getElementById('appointerLastName').value = '';
+      document.getElementById('appointerContactNumber').value = '';
+      document.getElementById('appointerBloodType').value = '';
+      document.getElementById('appointerDate').value = '';
+
+      console.log(jsonData);
+
+
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+
+
+
+}
+
+
+//bloodBank bloodstroage view in blood box
+
+function fetchBloodStorage() {
+  fetch('php/bloodStorageView.php')
+    .then(response => response.json())
+    .then(jsonData => {
+      var bloodBankContainer = document.getElementById('bloodStorageBox');
+      bloodBankContainer.innerHTML = '';
+
+      Object.values(jsonData).forEach(function (bloodBank) {
+        bloodBank.bloodData.forEach(function (bloodTypeData) {
+          // Create a new div for each blood type
+          var bloodTypeDiv = document.createElement('div');
+          bloodTypeDiv.className = 'col-mb-4 box-blood-storage';
+
+          // Create the content for each blood type div
+          bloodTypeDiv.innerHTML = `
+            <div class="p-3 text-center">
+              <h4 id="${bloodTypeData.bloodType.toLowerCase()}">${bloodTypeData.bloodType}</h4>
+              <p>Blood Available</p>
+              <p id="${bloodTypeData.bloodType.toLowerCase()}-Quantity">Total: ${bloodTypeData.totalQuantity} Bags</p>
+            </div>
+          `;
+
+          // Append the blood type div to the bloodBankContainer
+          bloodBankContainer.appendChild(bloodTypeDiv);
+        });
+      });
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+}
+
+
+fetchBloodStorage()
+
+// update blood Storage 
+
+function updateBloodStorage() {
+
+  const storageType = document.getElementById('storageType').value;
+  if (storageType == 'donate') {
+
+    const donateId = document.getElementById('donateId').value;
+    const donatedBloodGroup = document.getElementById('donatedBloodGroup').value;
+    const donatedBloodQuantity = document.getElementById('donatedBloodQuantity').value;
+    const donatedDate = document.getElementById('donatedDate').value;
+
+    fetch('php/updateStorage.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        donateId,
+        donatedBloodGroup,
+        donatedBloodQuantity,
+        donatedDate
+      }),
+    })
+      .then(response => response.json())
+      .then(jsonData => {
+        document.getElementById('donateId') = '';
+        document.getElementById('donatedBloodGroup') = '';
+        document.getElementById('donatedBloodQuantity') = '';
+        document.getElementById('donatedDate') = '';
+
+        console.log(jsonData);
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  }
+  else {
+    console.log(storageType);
+  }
+
+
 }
 

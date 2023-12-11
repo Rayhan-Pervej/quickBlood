@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 08, 2023 at 08:23 PM
+-- Generation Time: Dec 11, 2023 at 07:25 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -38,6 +38,38 @@ CREATE TABLE `approvedbloodbank` (
   `bankNumber` varchar(15) NOT NULL,
   `bankPassword` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `approvedbloodbank`
+--
+
+INSERT INTO `approvedbloodbank` (`bankId`, `bankName`, `regId`, `licenceNumber`, `bankCityName`, `bankAddress`, `bankEmail`, `bankNumber`, `bankPassword`) VALUES
+(1, 'Bangladesh Blood Bank', 123, 456, 'Dhaka', '123 Main Street', 'bbb@gmail.com', '0123456789', '12345'),
+(2, 'Dhaka Blood Center', 789, 101, 'Dhaka', '456 Center Street', 'dbc@gmail.com', '9876543210', '12345'),
+(3, 'Chittagong Blood Service', 456, 789, 'Chittagong', '789 Service Road', 'cbs@gmail.com', '1122334455', '12345');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `bloodbankappointment`
+--
+
+CREATE TABLE `bloodbankappointment` (
+  `userId` int(11) NOT NULL,
+  `bankId` int(11) NOT NULL,
+  `appointerFirstName` varchar(30) NOT NULL,
+  `appointerLastName` varchar(30) NOT NULL,
+  `appointerContactNumber` varchar(15) NOT NULL,
+  `appointerBloodType` varchar(11) NOT NULL,
+  `appointerDonationDate` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `bloodbankappointment`
+--
+
+INSERT INTO `bloodbankappointment` (`userId`, `bankId`, `appointerFirstName`, `appointerLastName`, `appointerContactNumber`, `appointerBloodType`, `appointerDonationDate`) VALUES
+(10, 1, 'Rayhan', 'Pervej', '23423', 'O+', '2023-12-12');
 
 -- --------------------------------------------------------
 
@@ -79,6 +111,26 @@ CREATE TABLE `bloodstore` (
   `donateDate` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `bloodstore`
+--
+
+INSERT INTO `bloodstore` (`bankId`, `userId`, `bloodType`, `bloodQuantity`, `donateDate`) VALUES
+(1, 10, 'O+', 2, '0000-00-00'),
+(2, 14, 'B+', 2, '0000-00-00'),
+(1, 10, 'O+', 2, '2023-12-11'),
+(1, 14, 'B+', 2, '2023-12-10'),
+(1, 15, 'A-', 1, '2023-12-07'),
+(1, 16, 'AB+', 2, '2023-12-06'),
+(1, 10, 'O+', 3, '2023-12-13'),
+(1, 15, 'O+', 3, '2023-12-14'),
+(1, 15, 'AB-', 3, '2023-12-14'),
+(1, 20, 'B-', 2, '2023-12-18'),
+(1, 20, 'B-', 2, '2023-12-18'),
+(1, 20, 'B-', 2, '2023-12-18'),
+(1, 10, 'B+', 2, '2023-12-29'),
+(1, 14, 'B+', 2, '2023-12-22');
+
 -- --------------------------------------------------------
 
 --
@@ -93,6 +145,13 @@ CREATE TABLE `contactus` (
   `number` varchar(16) NOT NULL,
   `messege` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `contactus`
+--
+
+INSERT INTO `contactus` (`id`, `fName`, `lName`, `email`, `number`, `messege`) VALUES
+(13, 'dj', 'dfads', 'alibaba@gmail.com', '13432', 'adf');
 
 -- --------------------------------------------------------
 
@@ -157,6 +216,12 @@ ALTER TABLE `approvedbloodbank`
   ADD PRIMARY KEY (`bankId`);
 
 --
+-- Indexes for table `bloodbankappointment`
+--
+ALTER TABLE `bloodbankappointment`
+  ADD PRIMARY KEY (`userId`);
+
+--
 -- Indexes for table `bloodrequest`
 --
 ALTER TABLE `bloodrequest`
@@ -182,7 +247,7 @@ ALTER TABLE `userinfo`
 -- AUTO_INCREMENT for table `approvedbloodbank`
 --
 ALTER TABLE `approvedbloodbank`
-  MODIFY `bankId` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `bankId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `bloodrequest`
@@ -194,7 +259,7 @@ ALTER TABLE `bloodrequest`
 -- AUTO_INCREMENT for table `contactus`
 --
 ALTER TABLE `contactus`
-  MODIFY `id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `userinfo`
