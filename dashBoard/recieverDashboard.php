@@ -314,22 +314,8 @@ if (!isset($_SESSION['userId'])) {
 
               <div id="post-container" class="container">
                   <!-- Dynamic post cards go here -->
-                  <div class="card mb-3">
-                      <div class="card-header">
-                          <h4 class="card-title text-center">Dhaka Blood Bank</h4>
-                          <p class="card-title"> c block, bashundhara, dhaka</p>
-                          
-                      </div>
-                      <div class="card-body">
-                          <h4>Blood Avaialbe:</h4>
-                          <ul>
-                              <li>A+ : <span> 35</span> bag</li>
-                              <li>B+ : <span> 200</span> bag</li>
-                              <li>AB- : <span> 20</span> bag</li>
-                          </ul>
-                      </div>
-                      <div class="card-footer d-flex justify-content-end">
-                      </div>
+                  <div id="bloodBankViewR">
+
                   </div>
                   <!-- Repeat the above card structure for each post -->
 

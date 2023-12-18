@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 11, 2023 at 07:25 PM
+-- Generation Time: Dec 18, 2023 at 11:11 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -55,8 +55,8 @@ INSERT INTO `approvedbloodbank` (`bankId`, `bankName`, `regId`, `licenceNumber`,
 --
 
 CREATE TABLE `bloodbankappointment` (
-  `userId` int(11) NOT NULL,
   `bankId` int(11) NOT NULL,
+  `userId` int(11) NOT NULL,
   `appointerFirstName` varchar(30) NOT NULL,
   `appointerLastName` varchar(30) NOT NULL,
   `appointerContactNumber` varchar(15) NOT NULL,
@@ -68,8 +68,35 @@ CREATE TABLE `bloodbankappointment` (
 -- Dumping data for table `bloodbankappointment`
 --
 
-INSERT INTO `bloodbankappointment` (`userId`, `bankId`, `appointerFirstName`, `appointerLastName`, `appointerContactNumber`, `appointerBloodType`, `appointerDonationDate`) VALUES
-(10, 1, 'Rayhan', 'Pervej', '23423', 'O+', '2023-12-12');
+INSERT INTO `bloodbankappointment` (`bankId`, `userId`, `appointerFirstName`, `appointerLastName`, `appointerContactNumber`, `appointerBloodType`, `appointerDonationDate`) VALUES
+(0, 10, '', '', '', '', '0000-00-00'),
+(1, 10, 'erqwer', 'qer', '234', 'v', '2023-12-20');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `bloodorder`
+--
+
+CREATE TABLE `bloodorder` (
+  `userId` int(11) NOT NULL,
+  `bankId` int(11) NOT NULL,
+  `recieverFirstName` varchar(30) NOT NULL,
+  `recieverLastName` varchar(30) NOT NULL,
+  `recieverContactNumber` int(15) NOT NULL,
+  `recieverBloodType` varchar(11) NOT NULL,
+  `recieverQuantity` int(11) NOT NULL,
+  `recieverReason` text NOT NULL,
+  `recieverOrderDate` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `recieverOrderStatus` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `bloodorder`
+--
+
+INSERT INTO `bloodorder` (`userId`, `bankId`, `recieverFirstName`, `recieverLastName`, `recieverContactNumber`, `recieverBloodType`, `recieverQuantity`, `recieverReason`, `recieverOrderDate`, `recieverOrderStatus`) VALUES
+(13, 1, 'adjfa', 'adf', 2343, 'B+', 2, 'adfadf', '2023-12-18 09:59:40', 'pending');
 
 -- --------------------------------------------------------
 
@@ -214,12 +241,6 @@ INSERT INTO `userinfo` (`userId`, `firstName`, `lastName`, `userType`, `bloodTyp
 --
 ALTER TABLE `approvedbloodbank`
   ADD PRIMARY KEY (`bankId`);
-
---
--- Indexes for table `bloodbankappointment`
---
-ALTER TABLE `bloodbankappointment`
-  ADD PRIMARY KEY (`userId`);
 
 --
 -- Indexes for table `bloodrequest`

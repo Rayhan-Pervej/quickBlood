@@ -566,6 +566,109 @@ function fetchBloodBanks() {
 
 fetchBloodBanks();
 
+//reciever will able to view the blood bank
+
+function fetchBloodBank() {
+  fetch('php/bloodBankView.php')
+    .then(response => response.json())
+    .then(jsonData => {
+
+      console.log(jsonData);
+
+      var bloodBankContainer = document.getElementById('bloodBankViewR');
+      bloodBankContainer.innerHTML = '';
+
+      Object.values(jsonData).forEach(function (bloodBank) { //this is a effiecent way to get the obeject json file and pass it as an array. 
+
+        var card = document.createElement('div');
+        card.className = 'card mb-3';
+
+        var cardHeader = document.createElement('div');
+        cardHeader.className = 'card-header';
+        cardHeader.innerHTML = `
+                  <h4 class="card-title text-center">${bloodBank.bankName}</h4>
+                  <p class="card-title">${bloodBank.bankAddress}</p>
+                  <h6 class="card-title">${bloodBank.bankNumber}</h6>
+                  <p id="bloodBankId" hidden> ${bloodBank.bankId}</p>
+              `;
+
+        card.appendChild(cardHeader);
+
+        var cardBody = document.createElement('div');
+        cardBody.className = 'card-body';
+        cardBody.innerHTML = `
+                  <h4>Blood Available:</h4>
+                  <ul>
+                  ${bloodBank.bloodData.map(blood => `<li>${blood.bloodType} : <span>${blood.totalQuantity} bags</span></li>`).join('')} 
+              </ul>
+              `;
+
+        card.appendChild(cardBody);
+
+        var cardFooter = document.createElement('div');
+        cardFooter.className = 'card-footer d-flex justify-content-end';
+
+        var appointBtn = document.createElement('button');
+        appointBtn.className = 'btn btn-primary dropdown-toggle';
+        appointBtn.setAttribute('type', 'button');
+        appointBtn.setAttribute('data-toggle', 'dropdown');
+        appointBtn.setAttribute('aria-haspopup', 'true');
+        appointBtn.setAttribute('aria-expanded', 'false');
+        appointBtn.textContent = 'Order';
+
+        var dropdownMenu = document.createElement('div');
+        dropdownMenu.className = 'dropdown-menu';
+
+        var appointForm = document.createElement('form');
+        appointForm.innerHTML = `
+                  <div>
+                      <label for="appointerFirstName">First Name</label>
+                      <input type="text" class="form-control" id="recieverFirstName">
+                  </div>
+                  <div>
+                      <label for="appointerLastName">Last Name</label>
+                      <input type="text" class="form-control" id="recieverLastName">
+                  </div>
+                  <div>
+                      <label for="appointerContactNumber">Mobile Number</label>
+                      <input type="text" class="form-control" id="recieverContactNumber">
+                  </div>
+                  <div>
+                      <label for="appointerBloodType">Blood Type</label>
+                      <input type="text" class="form-control" placeHolder="" id="recieverBloodType">
+                  </div>
+                  <div>
+                      <label for="appointerDate"> Total Bags</label>
+                      <input type="number" min="1" class="form-control" placeHolder="" id="recieverQuantity">
+                  </div>
+                  <div>
+                      <label for="appointerDate"> Reason to order</label>
+                      <input type="text" class="form-control" placeHolder="" id="recieverReason">
+                  </div>
+              `;
+
+        dropdownMenu.appendChild(appointForm);
+
+        var submitBtn = document.createElement('button');
+        submitBtn.className = 'text-center mt-3 btn btn-primary';
+        submitBtn.textContent = 'Submit';
+        submitBtn.onclick = function () {
+          bloodBankOrder()
+        };
+
+        dropdownMenu.appendChild(submitBtn);
+        cardFooter.appendChild(appointBtn);
+        cardFooter.appendChild(dropdownMenu);
+        card.appendChild(cardFooter);
+        bloodBankContainer.appendChild(card);
+      });
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+}
+fetchBloodBank();
+
 // donor will make an appointment to bloodBank
 function bloodBankAppointment() {
   const appointerFirstName = document.getElementById('appointerFirstName').value;
@@ -599,6 +702,56 @@ function bloodBankAppointment() {
       document.getElementById('appointerContactNumber').value = '';
       document.getElementById('appointerBloodType').value = '';
       document.getElementById('appointerDate').value = '';
+
+      console.log(jsonData);
+
+
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+
+
+
+}
+
+//reciver will order from bloodBank
+
+function bloodBankOrder() {
+  const recieverFirstName = document.getElementById('recieverFirstName').value;
+  const recieverLastName = document.getElementById('recieverLastName').value;
+  const recieverContactNumber = document.getElementById('recieverContactNumber').value;
+  const recieverBloodType = document.getElementById('recieverBloodType').value;
+  const recieverQuantity = document.getElementById('recieverQuantity').value;
+  const recieverReason = document.getElementById('recieverReason').value;
+
+  const bankId = document.getElementById('bloodBankId').textContent;
+
+
+  fetch('php/recieverOrder.php', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      recieverFirstName,
+      recieverLastName,
+      recieverContactNumber,
+      recieverBloodType,
+      recieverQuantity,
+      recieverReason,
+      bankId
+    }),
+  })
+    .then(response => response.json())
+    .then(jsonData => {
+
+      document.getElementById('recieverFirstName').value = '';
+      document.getElementById('recieverLastName').value = '';
+      document.getElementById('recieverContactNumber').value = '';
+      document.getElementById('recieverBloodType').value = '';
+      document.getElementById('recieverQuantity').value = '';
+      document.getElementById('recieverReason').value = '';
 
       console.log(jsonData);
 
