@@ -10,7 +10,7 @@ if (isset($_GET['id'])) {
 
     $sql = "DELETE FROM contactus WHERE id = $id";
     if (mysqli_query($link, $sql)) {
-        // Redirect back to the original page
+        
         echo "<script>window.location.href = 'showmessege.php';</script>";
         exit();
     } else {

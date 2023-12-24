@@ -31,7 +31,7 @@ function displayData(dataArray) {
             <p>ID: ${data.id}</p>
             <p>Name: ${data.name}</p>
             <p>Email: ${data.email}</p>
-            <!-- Add more properties based on your data -->
+            
         `;
 
         container.appendChild(dataContainer);
